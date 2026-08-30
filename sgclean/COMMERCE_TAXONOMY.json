@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "categories": {
+    "electronics": {"productTypes": ["smartphones", "laptops", "tablets", "cameras", "headphones", "smartwatches"], "attributes": ["battery life", "storage", "connectivity", "warranty"]},
+    "fashion": {"productTypes": ["shirts", "jeans", "dresses", "jackets", "sarees", "kurtas"], "attributes": ["size", "material", "fit", "color", "occasion"]},
+    "footwear": {"productTypes": ["running shoes", "sneakers", "boots", "sandals", "formal shoes"], "attributes": ["size", "support", "water resistance", "terrain"]},
+    "home": {"productTypes": ["sofas", "mattresses", "desks", "chairs", "lamps", "storage"], "attributes": ["dimensions", "material", "assembly", "room"]},
+    "kitchen": {"productTypes": ["air fryers", "blenders", "coffee machines", "cookware", "kettles"], "attributes": ["capacity", "power", "dishwasher safe", "warranty"]},
+    "sports": {"productTypes": ["yoga mats", "dumbbells", "treadmills", "cycling gear", "hiking gear"], "attributes": ["weight", "skill level", "terrain", "durability"]},
+    "travel": {"productTypes": ["suitcases", "backpacks", "packing cubes", "travel adapters", "tents"], "attributes": ["capacity", "weight", "weather resistance", "airline compliance"]}
+  }
+}

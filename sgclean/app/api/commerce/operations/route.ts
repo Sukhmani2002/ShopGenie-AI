@@ -1,0 +1,6 @@
+import { NextResponse } from 'next/server'
+import { z } from 'zod'
+import { execute } from '@/lib/commerce-engine'
+
+const schema = z.object({ action: z.enum(['compare', 'optimize', 'alternatives']), products: z.array(z.object({ id: z.string(), title: z.string(), price: z.number(), category: z.string(), store: z.string(), features: z.array(z.string()), rating: z.number(), provenance: z.enum(['DEMO','LIVE','ESTIMATED']), reason: z.string() })).max(50), budget: z.number().nonnegative().nullable().optional(), query: z.string().optional() })
+export async function POST(request: Request) { try { const body = schema.parse(await request.json()); if (body.action === 'compare') return NextResponse.json({ products: body.products, recommendation: [...body.products].sort((a,b) => b.rating-a.rating)[0] ?? null, basis: 'Highest structured rating; apply user priorities in the next rerank.' }); if (body.action === 'optimize') return NextResponse.json({ plan: (await execute(body.query || 'shopping request')).optimization, source: 'DETERMINISTIC_ENGINE' }); return NextResponse.json({ alternatives: body.products.slice(0, 5), source: 'PROVIDER_CANDIDATES' }) } catch { return NextResponse.json({ error: 'Invalid commerce operation.' }, { status: 400 }) } }
